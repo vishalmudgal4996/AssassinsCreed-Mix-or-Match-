@@ -31,8 +31,28 @@ body {
   font-size: 5em;
 }
 
+.game-info-container {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+}
+
 .game-info {
   font-family: Creedmore, serif;
   color: #fff3cd;
   font-size: 3em;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  margin: 50px;
+  justify-content: center;
+}
+
+.card {
+  background-color: black;
+  height: 175px;
+  width: 125px;
 }
