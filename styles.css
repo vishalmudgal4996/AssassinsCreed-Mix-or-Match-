@@ -16,6 +16,7 @@
 
 html {
   min-height: 100vh;
+  cursor: default;
 }
 
 body {
@@ -58,6 +59,10 @@ body {
   width: 125px;
 }
 
+.card:hover {
+  cursor: pointer;
+}
+
 .card-face {
   position: absolute;
   width: 100%;
@@ -79,6 +84,23 @@ body {
 
 .card.visible .card-front {
   transform: rotateY(0);
+}
+
+.card:hover .card-value {
+  animation: dance 1s linear infinite 500ms;
+}
+
+@keyframes dance {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(30deg);
+  }
 }
 
 .card-back {
