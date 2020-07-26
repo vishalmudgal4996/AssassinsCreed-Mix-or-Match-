@@ -71,13 +71,32 @@ body {
   border-style: solid;
 }
 
+.card.visible .card-back {
+  transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+  transform: rotateY(0);
+}
+
 .card-back {
   border-color: #ff6d00;
   background-color: black;
 }
 
 .card-front {
-  transform: rotateX(180deg);
+  background-color: #ffbb89;
+  border-color: black;
+  transform: rotateY(180deg);
+}
+
+.card-value {
+  transition: transform 100ms ease-in-out;
+  transform: scale(0.9);
+}
+
+.card-front:hover .card-value {
+  transform: scale(1);
 }
 
 .code-web {
@@ -87,7 +106,7 @@ body {
   transition: width 100ms ease-in-out, height 100ms ease-in-out;
 }
 
-.card-back:hover .code-web {
+.card-face:hover .code-web {
   width: 52px;
   height: 52px;
 }
