@@ -86,8 +86,43 @@ body {
   transform: rotateY(0);
 }
 
-.card:hover .card-value {
+.card.matched .card-value {
   animation: dance 1s linear infinite 500ms;
+}
+
+.overlay-text {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  color: #ff6d00;
+  font-family: Creepy, serif;
+}
+
+.overlay-text-small {
+  font-size: 0.3em;
+}
+
+.overlay-text.visible {
+  display: flex;
+  flex-direction: column;
+  animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 0;
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 8em;
+  }
 }
 
 @keyframes dance {
