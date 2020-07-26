@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "Assassin";
+  src: url("Assets/Fonts/Assassin.woff") format("woff"),
+    url("Assets/Fonts/Assassin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Creedmore";
+  src: url("Assets/Fonts/creedmore.woff") format("woff"),
+    url("Assets/Fonts/creedmore.woff2") format("woff2");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(#c1232c, #2d2c2e);
+}
+
+.page-title {
+  color: #c7c8ca;
+  font-family: Assassin, serif;
+  font-weight: normal;
+  text-align: center;
+  font-size: 5em;
+}
+
+.game-info {
+  font-family: Creedmore, serif;
+  color: #fff3cd;
+  font-size: 3em;
+}
