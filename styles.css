@@ -140,7 +140,7 @@ body {
 
 .card-back {
   border-color: #ff6d00;
-  background-color: black;
+  background-color: rgb(250, 244, 244);
 }
 
 .card-front {
