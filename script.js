@@ -51,9 +51,16 @@ class MixOrMatch {
     this.totalClick = 0;
     this.timeRemaining = this.totalTime;
     this.matchedCards = []; // array to hold matched cards
-    this.busy = true; //specify whether card can be flipped or not
+    this.busy = true; //specify whether card can be flipped or not (like when any animation is running)
   }
-  
+  //func to tell whether card can be flipped or not
+  canFlipCard(card) {
+    return (
+      !this.busy &&
+      !this.matchedCards.includes(card) &&
+      card !== this.cardToCheck
+    );
+  }
 }
 
 //Rendering all elements of HTML DOM
@@ -68,21 +75,18 @@ if (document.readyState === "loading") {
 function ready() {
   let overlays = Array.from(document.getElementsByClassName("overlay-text"));
   let cards = Array.from(document.getElementsByClassName("card"));
+  let game = new MixOrMatch(100, cards);
 
   overlays.forEach((overlay) => {
     overlay.addEventListener("click", () => {
       overlay.classList.remove("visible");
-      //game.startGame();
-      let audioController = new AudioController();
-      audioController.startMusic();
+      game.startGame();
     });
   });
 
   cards.forEach((card) => {
     card.addEventListener("click", () => {
-      //game.flipCard(Card);
-      let audioController = new AudioController();
-      audioController.flip();
+      game.flipCard(card);
     });
   });
 }
