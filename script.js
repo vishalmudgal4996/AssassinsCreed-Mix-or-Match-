@@ -81,6 +81,22 @@ class MixOrMatch {
     }
   }
 
+  startCountDown() {
+    return setInterval(() => {
+      this.timeRemaining--;
+      this.timer.innerText = this.timeRemaining;
+      if (this.timeRemaining == 0) {
+        this.gameOver();
+      }
+    }, 1000);
+  }
+
+  gameOver() {
+    clearInterval(this.countDown);
+    this.audioController.gameOver();
+    document.getElementById("game-over-text").classList.add("visible");
+  }
+
   shuffleCards() {
     for (let i = this.cardsArray.length - 1; i > 0; i--) {
       let randIndex = Math.floor(Math.random() * (i + 1));
@@ -112,7 +128,7 @@ if (document.readyState === "loading") {
 function ready() {
   let overlays = Array.from(document.getElementsByClassName("overlay-text"));
   let cards = Array.from(document.getElementsByClassName("card"));
-  let game = new MixOrMatch(100, cards);
+  let game = new MixOrMatch(5, cards);
 
   overlays.forEach((overlay) => {
     overlay.addEventListener("click", () => {
