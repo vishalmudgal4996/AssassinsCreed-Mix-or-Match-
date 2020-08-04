@@ -112,6 +112,16 @@ class MixOrMatch {
     }
   }
 
+  //if match not found
+  cardMisMatch() {
+    this.busy = true;
+    setTimeout(() => {
+      card1.classList.remove("visible");
+      card2.classList.remove("visible");
+      this.busy = false;
+    }, 1000);
+  }
+
   // to get card-value(src) of a card so that it can be compared.
   getCardType(card) {
     return card.getElementsByClassName("card-value")[0].src;
