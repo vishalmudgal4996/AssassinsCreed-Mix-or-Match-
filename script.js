@@ -52,7 +52,24 @@ class MixOrMatch {
     this.timeRemaining = this.totalTime;
     this.matchedCards = []; // array to hold matched cards
     this.busy = true; //specify whether card can be flipped or not (like when any animation is running)
-    this.shuffleCards();
+
+    setTimeout(() => {
+      this.audioController.startMusic();
+      this.shuffleCards();
+      this.countDown = this.startCountDown();
+      this.busy = false;
+    }, 500);
+
+    this.hideCards();
+    this.timer.innerText = this.timeRemaining;
+    this.ticker.innerText = this.totalClicks;
+  }
+
+  hideCards() {
+    this.cardsArray.forEach((card) => {
+      card.classList.remove("visible");
+      card.classList.remove("matched");
+    });
   }
 
   flipCard(card) {
