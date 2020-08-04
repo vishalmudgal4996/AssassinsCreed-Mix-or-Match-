@@ -48,18 +48,38 @@ class MixOrMatch {
   }
   startGame() {
     this.cardToCheck = null; //current flipped card
-    this.totalClick = 0;
+    this.totalClicks = 0;
     this.timeRemaining = this.totalTime;
     this.matchedCards = []; // array to hold matched cards
     this.busy = true; //specify whether card can be flipped or not (like when any animation is running)
+    this.shuffleCards();
   }
+
+  flipCard(card) {
+    if (this.canFlipCard(card)) {
+      this.audioController.flip();
+      this.totalClicks++;
+      this.ticker.innerText = this.totalClicks;
+      card.classList.add("visible");
+    }
+  }
+
+  shuffleCards() {
+    for (let i = this.cardsArray.length - 1; i > 0; i--) {
+      let randIndex = Math.floor(Math.random() * (i + 1));
+      this.cardsArray[randIndex].style.order = i;
+      this.cardsArray[i].style.order = randIndex;
+    }
+  }
+
   //func to tell whether card can be flipped or not
   canFlipCard(card) {
-    return (
-      !this.busy &&
-      !this.matchedCards.includes(card) &&
-      card !== this.cardToCheck
-    );
+    return true;
+    // return (
+    //   !this.busy &&
+    //   !this.matchedCards.includes(card) &&
+    //   card !== this.cardToCheck
+    // );
   }
 }
 
