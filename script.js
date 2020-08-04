@@ -88,7 +88,29 @@ class MixOrMatch {
   }
 
   // to check if card have a match or not
-  checkForCardMatch(card) {}
+  checkForCardMatch(card) {
+    if (this.getCardType(card) === this.getCardType(this.cardToCheck)) {
+      this.cardMatch(card, this.cardToCheck);
+    } else {
+      this.cardMisMatch(card, this.cardToCheck);
+    }
+
+    this.cardToCheck = null;
+  }
+
+  // if match is found
+  cardMatch(card1, card2) {
+    this.matchedCards.push(card1);
+    this.matchedCards.push(card2);
+    card1.classList.add("matched");
+    card2.classList.add("matched");
+    this.audioController.match();
+
+    //condition for victory text
+    if (this.matchedCards.length === this.cardsArray.length) {
+      this.victory();
+    }
+  }
 
   // to get card-value(src) of a card so that it can be compared.
   getCardType(card) {
