@@ -35,6 +35,29 @@ class AudioController {
   }
 }
 
+//Actual game class for mix or match
+
+class MixOrMatch {
+  constructor(totalTime, cards) {
+    this.cardsArray = cards;
+    this.tatalTime = totalTime;
+    this.timeRemaining = totalTime;
+    this.timer = document.getElementById("time-remaining");
+    this.ticker = document.getElementById("flips");
+    this.audioController = new AudioController();
+  }
+  startGame() {
+    this.cardToCheck = null; //current flipped card
+    this.totalClick = 0;
+    this.timeRemaining = this.totalTime;
+    this.matchedCards = []; // array to hold matched cards
+    this.busy = true; //specify whether card can be flipped or not
+  }
+  
+}
+
+//Rendering all elements of HTML DOM
+
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", ready());
 } else {
@@ -58,6 +81,8 @@ function ready() {
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       //game.flipCard(Card);
+      let audioController = new AudioController();
+      audioController.flip();
     });
   });
 }
